@@ -1,0 +1,17 @@
+﻿{
+    "TaxBandA": {
+        "MinimumLimit": 0,
+        "MaximumLimit": 5000,
+        "TaxPercentage": 0
+    },
+    "TaxBandB": {
+        "MinimumLimit": 5000,
+        "MaximumLimit": 20000,
+        "TaxPercentage": 20
+    },
+    "TaxBandC": {
+        "MinimumLimit": 20000,
+        "MaximumLimit": -1,
+        "TaxPercentage": 40
+    }
+}

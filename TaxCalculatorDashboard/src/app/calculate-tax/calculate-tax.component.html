@@ -1,0 +1,16 @@
+<h1>Tax Calculator</h1>
+<div>
+  Gross annual salary:
+  <input type="number" name="annualSalaryInputField" [(ngModel)]="salary">
+  <button type="button" name="calculateTax" (click)="getTax()">Calculate</button>
+</div>
+
+<div *ngIf="buttonPressed" class="taxCalculatorResult">
+<br>
+Gross Annual Salary: {{taxResult.grossAnnualSalary}} <br>
+Gross Monthly Salary: {{taxResult.grossMonthlySalary}} <br>
+Annual Tax Paid: {{taxResult.annualTaxPaid}} <br>
+Monthly Tax Paid: {{taxResult.monthlyTaxPaid}} <br>
+Net Annual Salary: {{taxResult.netAnnualSalary}} <br>
+Net Monthly Salary: {{taxResult.netMonthlySalary}} <br>
+</div>

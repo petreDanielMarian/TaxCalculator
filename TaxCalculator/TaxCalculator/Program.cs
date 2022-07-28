@@ -1,7 +1,6 @@
 using TaxCalculator;
-using TaxCalculator.Models.TaxBands;
+using TaxCalculator.Containers;
 using TaxCalculator.Services;
-using TaxCalculator.Services.Handlers;
 using TaxCalculator.Services.Interfaces;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -14,6 +13,7 @@ builder.Services.AddCors();
 
 // Add Services
 builder.Services.AddSingleton<ITaxCalculatorService, TaxCalculatorService>();
+builder.Services.AddSingleton<ITaxBandHandlerManager, TaxBandHandlerManager>();
 
 var app = builder.Build();
 
@@ -28,8 +28,6 @@ app.UseEndpoints(endpoints =>
     endpoints.MapControllers();
 });
 
-// app.MapGet("/", () => "Hello World!");
-
 var testClass = new TestClass();
 testClass.Do();
 
@@ -41,11 +39,10 @@ namespace TaxCalculator
     {
         public void Do()
         {
-            var taxCHandler = new TaxBandCalculatorHandler(new TaxBandC());
-            var taxBHandler = new TaxBandCalculatorHandler(new TaxBandB(), taxCHandler);
-            var taxAHandler = new TaxBandCalculatorHandler(new TaxBandA(), taxBHandler);
+            var taxBandCalculatorHandlerManager = new TaxBandHandlerManager();
+            var taxAHandler = taxBandCalculatorHandlerManager.CreateChainOfResponsibility(TaxBandsContainer.GetTaxBandsAbc());
 
-            var salary = 8000;
+            var salary = 40000;
             var handleResult = taxAHandler.Handle(salary);
             Console.WriteLine($"------------ Tax is {handleResult} -----------");
             Console.ReadLine();

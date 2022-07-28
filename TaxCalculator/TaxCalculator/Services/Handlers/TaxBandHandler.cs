@@ -3,12 +3,12 @@ using TaxCalculator.Services.Interfaces;
 
 namespace TaxCalculator.Services.Handlers;
 
-public class TaxBandCalculatorHandler : ITaxBandCalculatorHandler
+public class TaxBandHandler : ITaxBandHandler
 {
     private ITaxBand TaxBand { get; }
-    public ITaxBandCalculatorHandler? NextHandler { get; }
+    public ITaxBandHandler? NextHandler { get; }
 
-    public TaxBandCalculatorHandler(ITaxBand taxBand, ITaxBandCalculatorHandler? nextHandler = null)
+    public TaxBandHandler(ITaxBand taxBand, ITaxBandHandler? nextHandler = null)
     {
         TaxBand = taxBand;
         NextHandler = nextHandler;

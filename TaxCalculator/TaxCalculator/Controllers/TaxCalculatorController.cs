@@ -24,15 +24,28 @@ public class TaxCalculatorController : ControllerBase
         }
 
         var roundedSalary = Math.Round(salary, Constants.Math.TwoDecimalsAproximation);
+
+        try
+        {
+            var taxPayed = Math.Round(_taxCalculatorService.GetTaxFromSalary(roundedSalary), Constants.Math.TwoDecimalsAproximation);
         
-        var taxPayed = Math.Round(_taxCalculatorService.GetTaxFromSalary(roundedSalary), Constants.Math.TwoDecimalsAproximation);
-        
+            return ComputeTaxCalculatorResponse(roundedSalary, taxPayed);
+        }
+        catch (ArgumentNullException)
+        {
+            return ComputeTaxCalculatorResponse(roundedSalary, 0, "No Tax bands were applied.");
+        }
+    }
+
+    private static TaxCalculatorResultsResponse ComputeTaxCalculatorResponse(double roundedSalary, double taxPayed, string errorMessage = null!)
+    {
         return new TaxCalculatorResultsResponse
         {
             GrossAnnualSalary = roundedSalary,
             GrossMonthlySalary = Math.Round(roundedSalary/Constants.TimePeriods.TwelveMonths, Constants.Math.TwoDecimalsAproximation),
             AnnualTaxPaid = taxPayed,
-            MonthlyTaxPaid = Math.Round(taxPayed/Constants.TimePeriods.TwelveMonths, Constants.Math.TwoDecimalsAproximation)
+            MonthlyTaxPaid = Math.Round(taxPayed/Constants.TimePeriods.TwelveMonths, Constants.Math.TwoDecimalsAproximation),
+            ErrorMessage = errorMessage
         };
     }
 }

@@ -12,4 +12,5 @@ public class TaxCalculatorResultsResponse
 
     public double NetMonthlySalary =>
         Math.Round(GrossMonthlySalary - MonthlyTaxPaid, Constants.Math.TwoDecimalsAproximation);
+    public string ErrorMessage { get; set; } = null!;
 }

@@ -14,3 +14,7 @@ Monthly Tax Paid: {{taxResult.monthlyTaxPaid}} <br>
 Net Annual Salary: {{taxResult.netAnnualSalary}} <br>
 Net Monthly Salary: {{taxResult.netMonthlySalary}} <br>
 </div>
+
+<div *ngIf="taxResult.errorMessage">
+  {{taxResult.errorMessage}}
+</div>

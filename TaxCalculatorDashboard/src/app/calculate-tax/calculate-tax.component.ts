@@ -32,7 +32,8 @@ export class CalculateTaxComponent implements OnInit {
     this.buttonPressed = true;
     this.taxCalculatorService
        .getTax(this.salary)
-       .subscribe(result => this.taxResult = result);
+       .subscribe(result => this.taxResult = result,
+       error => console.log('Error', error));
   }
 
   resetView(): void {

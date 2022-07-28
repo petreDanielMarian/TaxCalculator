@@ -5,4 +5,5 @@ export class TaxResult {
   monthlyTaxPaid: number;
   netAnnualSalary: number;
   netMonthlySalary: number;
+  errorMessage: string;
 }

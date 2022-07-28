@@ -22,15 +22,15 @@ Simple UK tax calculator based on 3 different tax bands.
 - run ```ng serve```
 - go to ```http://localhost:4200```
 
-### Tech stack:
-# Backend:
+## Tech stack:
+### Backend:
 - .NetCore 6
 - C# 10
 - Swagger ui
 - Newtonsoft.Json
-# Unit testing:
+### Unit testing:
 - xUnit
 - Moq
-# Frontend
+### Frontend
 - Angular 13
 - REST

@@ -33,8 +33,8 @@ public class TaxBandHandlerManagerTests
         // Assert
         taxBandCalculatorHandler.Should().NotBeNull();
         taxBandCalculatorHandler.NextHandler.Should().NotBeNull();
-        taxBandCalculatorHandler.NextHandler.NextHandler.Should().NotBeNull();
-        taxBandCalculatorHandler.NextHandler.NextHandler.NextHandler.Should().BeNull();
+        taxBandCalculatorHandler.NextHandler!.NextHandler.Should().NotBeNull();
+        taxBandCalculatorHandler.NextHandler.NextHandler!.NextHandler.Should().BeNull();
     }
     
     [Fact]

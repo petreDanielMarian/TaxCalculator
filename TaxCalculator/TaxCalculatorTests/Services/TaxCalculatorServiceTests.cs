@@ -13,7 +13,7 @@ namespace TaxCalculatorTests.Services;
 
 public class TaxCalculatorServiceTests
 {
-    private TaxCalculatorService _taxCalculatorService;
+    private TaxCalculatorService _taxCalculatorService = null!;
     private readonly Mock<ITaxBandHandlerManager> _taxBandHandlerManagerMock;
     private readonly TaxBandHandler _taxBandAHandler;
     

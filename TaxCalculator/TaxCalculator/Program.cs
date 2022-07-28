@@ -1,5 +1,3 @@
-using TaxCalculator;
-using TaxCalculator.Containers;
 using TaxCalculator.Services;
 using TaxCalculator.Services.Interfaces;
 
@@ -28,25 +26,5 @@ app.UseEndpoints(endpoints =>
     endpoints.MapControllers();
 });
 
-var testClass = new TestClass();
-testClass.Do();
-
 app.Run();
-
-namespace TaxCalculator
-{
-    public class TestClass
-    {
-        public void Do()
-        {
-            var taxBandCalculatorHandlerManager = new TaxBandHandlerManager();
-            var taxAHandler = taxBandCalculatorHandlerManager.CreateChainOfResponsibility(TaxBandsContainer.GetTaxBandsAbc());
-
-            var salary = 40000;
-            var handleResult = taxAHandler.Handle(salary);
-            Console.WriteLine($"------------ Tax is {handleResult} -----------");
-            Console.ReadLine();
-        }
-    }
-}
 
